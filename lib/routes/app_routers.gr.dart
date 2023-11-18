@@ -36,13 +36,7 @@ abstract class _$AppRouter extends RootStackRouter {
     OurProductsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const OurProductsPage(),
-      );
-    },
-    SoftnetRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const SoftnetPage(),
+        child: const NosotrosPage(),
       );
     },
     SplashRoute.name: (routeData) {
@@ -106,20 +100,6 @@ class OurProductsRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'OurProductsRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [SoftnetPage]
-class SoftnetRoute extends PageRouteInfo<void> {
-  const SoftnetRoute({List<PageRouteInfo>? children})
-      : super(
-          SoftnetRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'SoftnetRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

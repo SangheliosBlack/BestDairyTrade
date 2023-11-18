@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 
 import 'package:skeleton/pages/pages.dart';
-import 'package:skeleton/views/dashboard/softnet_page.dart';
 import 'package:skeleton/views/views.dart';
 
 part 'app_routers.gr.dart';
@@ -24,23 +23,18 @@ class AppRouter extends _$AppRouter {
             durationInMilliseconds: 800,
             children: [
               CustomRoute(
-                  page: SoftnetRoute.page,
+                  page: DashboardDefaultRoute.page,
                   transitionsBuilder: TransitionsBuilders.fadeIn,
                   reverseDurationInMilliseconds: 800,
                   durationInMilliseconds: 800,
+                  initial: true,
                   path: ''),
-              //CustomRoute(
-                //  page: DashboardDefaultRoute.page,
-                  //transitionsBuilder: TransitionsBuilders.fadeIn,
-                  //reverseDurationInMilliseconds: 800,
-                  //durationInMilliseconds: 800,
-                  //path: ''),
               CustomRoute(
                   page: OurProductsRoute.page,
                   transitionsBuilder: TransitionsBuilders.fadeIn,
                   reverseDurationInMilliseconds: 800,
                   durationInMilliseconds: 800,
-                  path: 'ourProducts'),
+                  path: 'nosotros'),
             ],
             path: '/dashboard'),
         CustomRoute(
