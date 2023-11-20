@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flag/flag_enum.dart';
 import 'package:flag/flag_widget.dart';
 import 'package:flutter/material.dart';
@@ -7,14 +8,20 @@ import 'package:skeleton/helpers/extensions.dart';
 import 'package:skeleton/themes/main_theme.dart';
 
 class Header extends StatelessWidget {
-  const Header({super.key});
+  final void Function()? funcion;
+  const Header({super.key, required this.funcion});
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (BuildContext context, SizingInformation sizingInformation) {
         if (sizingInformation.isDesktop) {
           return Container(
-            margin: const EdgeInsets.only(top: 40, left: 40, right: 40),
+            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border(
+                    bottom: BorderSide(
+                        color: Colors.grey.withOpacity(.1), width: 1))),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -29,17 +36,21 @@ class Header extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const LinkNav(texto: "BIENVENIDO"),
-                        const LinkNav(texto: "NOSOTROS"),
-                        const LinkNav(texto: "PROVEEDORES"),
-                        const LinkNav(texto: "OPORTUNIDADES"),
+                        const LinkNav(
+                          texto: "BIENVENIDO",
+                          route: '',
+                        ),
+                        const LinkNav(
+                          texto: "NOSOTROS",
+                          route: 'nosotros',
+                        ),
                         Flag.fromCode(FlagsCode.MX, height: 15, width: 15)
                       ],
                     ),
                   ),
                 ),
                 const Row(
-                  children: [AccesButton(), RegisterButton()],
+                  children: [RegisterButton()],
                 )
               ],
             ),
@@ -59,15 +70,18 @@ class Header extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        color: Themes.primary,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Icon(
-                      Icons.menu,
-                      color: Colors.white,
-                    ))
+                GestureDetector(
+                  onTap: funcion,
+                  child: Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Themes.primary,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: const Icon(
+                        Icons.menu,
+                        color: Colors.white,
+                      )),
+                )
               ],
             ),
           );
@@ -101,59 +115,35 @@ class _RegisterButtonState extends State<RegisterButton> {
             hover = false;
           });
         },
-        child: AnimatedContainer(
-          margin: const EdgeInsets.only(left: 25),
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          decoration: BoxDecoration(
-              color: hover ? Colors.black : Themes.primary,
-              borderRadius: BorderRadius.circular(20)),
-          duration: const Duration(milliseconds: 100),
-          child: Text(
-            "REGISTRARME",
-            style: GoogleFonts.quicksand(
-                color: Colors.white, fontWeight: FontWeight.w600),
+        child: GestureDetector(
+          onTap: () {
+            context.router.pushNamed("login");
+          },
+          behavior: HitTestBehavior.translucent,
+          child: AnimatedContainer(
+            margin: const EdgeInsets.only(left: 25),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            decoration: BoxDecoration(
+                color: hover ? Colors.black : Themes.primary,
+                borderRadius: BorderRadius.circular(20)),
+            duration: const Duration(milliseconds: 100),
+            child: Text(
+              "ACCEDER",
+              style: GoogleFonts.quicksand(
+                  color: Colors.white, fontWeight: FontWeight.w600),
+            ),
           ),
         ));
   }
 }
 
-class AccesButton extends StatefulWidget {
-  const AccesButton({super.key});
-
-  @override
-  State<AccesButton> createState() => _AccesButtonState();
-}
-
-class _AccesButtonState extends State<AccesButton> {
-  bool hover = false;
-  @override
-  Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      opaque: true,
-      onHover: (e) {
-        setState(() {
-          hover = true;
-        });
-      },
-      onExit: (e) {
-        setState(() {
-          hover = false;
-        });
-      },
-      child: Text(
-        "ACCEDER",
-        style: GoogleFonts.lato(color: Colors.black),
-      ),
-    );
-  }
-}
-
 class LinkNav extends StatefulWidget {
+  final String route;
   final String texto;
   const LinkNav({
     super.key,
     required this.texto,
+    required this.route,
   });
   @override
   State<LinkNav> createState() => _LinkNavState();
@@ -176,39 +166,46 @@ class _LinkNavState extends State<LinkNav> {
           hover = false;
         });
       },
-      child: AnimatedContainer(
-        padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-        duration: const Duration(seconds: 1),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              widget.texto,
-              style: GoogleFonts.lato(
-                color: Colors.black,
+      hitTestBehavior: HitTestBehavior.translucent,
+      child: GestureDetector(
+        onTap: () {
+          context.router.pushNamed(widget.route);
+        },
+        behavior: HitTestBehavior.translucent,
+        child: AnimatedContainer(
+          padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+          duration: const Duration(seconds: 1),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                widget.texto,
+                style: GoogleFonts.lato(
+                  color: Colors.black,
+                ),
+                overflow: TextOverflow.visible,
               ),
-              overflow: TextOverflow.visible,
-            ),
-            const SizedBox(
-              height: 2,
-            ),
-            AnimatedContainer(
-              decoration: BoxDecoration(
-                  color: Themes.primary,
-                  borderRadius: BorderRadius.circular(10)),
-              height: 2,
-              width: hover
-                  ? calculateTextWidth(
-                      widget.texto,
-                      GoogleFonts.bebasNeue(
-                        fontSize: 22,
-                        color: Colors.black,
-                      ))
-                  : 0,
-              duration: const Duration(milliseconds: 300),
-            )
-          ],
+              const SizedBox(
+                height: 2,
+              ),
+              AnimatedContainer(
+                decoration: BoxDecoration(
+                    color: Themes.primary,
+                    borderRadius: BorderRadius.circular(10)),
+                height: 2,
+                width: hover
+                    ? calculateTextWidth(
+                        widget.texto,
+                        GoogleFonts.bebasNeue(
+                          fontSize: 22,
+                          color: Colors.black,
+                        ))
+                    : 0,
+                duration: const Duration(milliseconds: 300),
+              )
+            ],
+          ),
         ),
       ),
     );

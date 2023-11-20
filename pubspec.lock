@@ -53,18 +53,18 @@ packages:
     dependency: "direct main"
     description:
       name: auto_route
-      sha256: "72f21e8b6cbbe25f02ea69183e024996530bf495cc1b077a49e0ec6726f0c271"
+      sha256: "82f8df1d177416bc6b7a449127d0270ff1f0f633a91f2ceb7a85d4f07c3affa1"
       url: "https://pub.dev"
     source: hosted
-    version: "7.8.3"
+    version: "7.8.4"
   auto_route_generator:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: auto_route_generator
-      sha256: e7aa9ab44b77cd31a4619d94db645ab5736e543fd0b4c6058c281249e479dfb8
+      sha256: "11067a3bcd643812518fe26c0c9ec073990286cabfd9d74b6da9ef9b913c4d22"
       url: "https://pub.dev"
     source: hosted
-    version: "7.3.1"
+    version: "7.3.2"
   bloc:
     dependency: transitive
     description:
@@ -858,6 +858,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.2"
+  url_strategy:
+    dependency: "direct main"
+    description:
+      name: url_strategy
+      sha256: "42b68b42a9864c4d710401add17ad06e28f1c1d5500c93b98c431f6b0ea4ab87"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.0"
   vector_graphics:
     dependency: transitive
     description:

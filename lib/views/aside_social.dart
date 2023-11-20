@@ -13,8 +13,8 @@ class AsideSocial extends StatelessWidget {
       builder: (BuildContext context, SizingInformation sizingInformation) {
         return Container(
           margin: EdgeInsets.only(
-              left: sizingInformation.isDesktop ? 95 : 20,
-              right: sizingInformation.isDesktop ? 0 : 20),
+              left: sizingInformation.isDesktop ? 95 : 0,
+              right: sizingInformation.isDesktop ? 0 : 0),
           height: context.height,
           child: Row(
             children: [

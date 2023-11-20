@@ -10,57 +10,63 @@ class Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-        bottom: 40,
-        child: ResponsiveBuilder(
-          builder: (BuildContext context, SizingInformation sizingInformation) {
-            return Container(
-              padding:
-                  EdgeInsets.only(bottom: sizingInformation.isDesktop ? 20 : 0),
-              margin: EdgeInsets.symmetric(
-                  horizontal: sizingInformation.isDesktop ? 80 : 0),
-              width: context.width - (sizingInformation.isDesktop ? 160 : 0),
-              child: Row(
-                mainAxisAlignment: sizingInformation.isDesktop
-                    ? MainAxisAlignment.spaceBetween
-                    : MainAxisAlignment.center,
-                children: [
-                  sizingInformation.isDesktop
-                      ? Row(
-                          children: [
-                            Text(
-                              "OPORTUNIDADES",
-                              style: GoogleFonts.lato(
-                                color: Themes.secondary,
-                              ),
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 15),
+      decoration: BoxDecoration(color: Colors.black, boxShadow: [
+        BoxShadow(
+            color: Colors.black.withOpacity(.3),
+            spreadRadius: 10,
+            blurRadius: 10,
+            offset: const Offset(0, 0))
+      ]),
+      child: ResponsiveBuilder(
+        builder: (BuildContext context, SizingInformation sizingInformation) {
+          return Container(
+            margin: EdgeInsets.symmetric(
+                horizontal: sizingInformation.isDesktop ? 80 : 0),
+            width: context.width - (sizingInformation.isDesktop ? 160 : 0),
+            child: Row(
+              mainAxisAlignment: sizingInformation.isDesktop
+                  ? MainAxisAlignment.spaceBetween
+                  : MainAxisAlignment.center,
+              children: [
+                sizingInformation.isDesktop
+                    ? Row(
+                        children: [
+                          Text(
+                            "OPORTUNIDADES",
+                            style: GoogleFonts.lato(
+                              color: Colors.white,
                             ),
-                            const SizedBox(
-                              width: 80,
+                          ),
+                          const SizedBox(
+                            width: 40,
+                          ),
+                          Text(
+                            "BLOG",
+                            style: GoogleFonts.lato(
+                              color: Colors.white,
                             ),
-                            Text(
-                              "BLOG",
-                              style: GoogleFonts.lato(
-                                color: Themes.secondary,
-                              ),
-                            ),
-                          ],
-                        )
-                      : Container(),
-                  const Row(
-                    children: [
-                      SocialButton(icon: FontAwesomeIcons.facebookF),
-                      SocialButton(
-                        icon: FontAwesomeIcons.instagram,
-                      ),
-                      SocialButton(icon: FontAwesomeIcons.tiktok),
-                      SocialButton(icon: FontAwesomeIcons.youtube)
-                    ],
-                  ),
-                ],
-              ),
-            );
-          },
-        ));
+                          ),
+                        ],
+                      )
+                    : Container(),
+                const Row(
+                  children: [
+                    SocialButton(icon: FontAwesomeIcons.facebookF),
+                    SocialButton(
+                      icon: FontAwesomeIcons.instagram,
+                    ),
+                    SocialButton(icon: FontAwesomeIcons.tiktok),
+                    SocialButton(icon: FontAwesomeIcons.youtube)
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
   }
 }
 
@@ -93,7 +99,7 @@ class _SocialButtonState extends State<SocialButton> {
         margin: const EdgeInsets.symmetric(horizontal: 20),
         child: Icon(
           widget.icon,
-          color: hover ? Colors.black : Themes.secondary,
+          color: hover ? Themes.secondary : Colors.white,
         ),
       ),
     );

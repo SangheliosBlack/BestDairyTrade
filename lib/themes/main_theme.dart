@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Themes {
-  static Color primary = Color.fromARGB(255, 255, 187, 39);
-  static Color primaryLight = Color.fromRGBO(243	,245	,250	, 1);
+  static Color primary = const Color.fromARGB(255, 255, 187, 39);
+  static Color primaryLight = const Color.fromRGBO(243, 245, 250, 1);
   static Color primaryTitle = Colors.grey.shade600;
   static Color primaryBody = Colors.grey.shade400;
-  static Color secondary = Color.fromRGBO(103, 192, 68, 1);
+  static Color secondary = const Color.fromRGBO(103, 192, 68, 1);
   static ThemeData appTheme = ThemeData(
     appBarTheme: const AppBarTheme(
         elevation: 0, color: Colors.white, foregroundColor: Colors.grey),
     scaffoldBackgroundColor: Colors.white,
-    
+    scrollbarTheme: ScrollbarThemeData(
+      thumbColor: MaterialStateProperty.all(
+          Colors.black), // Color de la barra de desplazamiento
+      trackColor: MaterialStateProperty.all(
+          Colors.redAccent), // Color del riel de la barra de desplazamiento
+    ),
     textTheme: TextTheme(
-
-      
-
         titleLarge: GoogleFonts.quicksand(
           color: primaryTitle,
           fontSize: 18,

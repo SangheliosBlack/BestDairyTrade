@@ -33,7 +33,13 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const DashboardPage(),
       );
     },
-    OurProductsRoute.name: (routeData) {
+    LoginRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const LoginPage(),
+      );
+    },
+    NosotrosRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const NosotrosPage(),
@@ -91,15 +97,29 @@ class DashboardRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [OurProductsPage]
-class OurProductsRoute extends PageRouteInfo<void> {
-  const OurProductsRoute({List<PageRouteInfo>? children})
+/// [LoginPage]
+class LoginRoute extends PageRouteInfo<void> {
+  const LoginRoute({List<PageRouteInfo>? children})
       : super(
-          OurProductsRoute.name,
+          LoginRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'OurProductsRoute';
+  static const String name = 'LoginRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [NosotrosPage]
+class NosotrosRoute extends PageRouteInfo<void> {
+  const NosotrosRoute({List<PageRouteInfo>? children})
+      : super(
+          NosotrosRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NosotrosRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

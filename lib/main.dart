@@ -6,9 +6,11 @@ import 'package:skeleton/blocs/auth_bloc/auth_bloc.dart';
 import 'package:skeleton/routes/app_routers.dart';
 import 'package:skeleton/services/local_storage.dart';
 import 'package:skeleton/themes/main_theme.dart';
+import 'package:url_strategy/url_strategy.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
+  setPathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
   await LocalStorage.configurePrefs();
   await di.initLocator();

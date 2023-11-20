@@ -5,8 +5,11 @@ import 'package:skeleton/views/views.dart';
 
 part 'app_routers.gr.dart';
 
-@AutoRouterConfig()
+@AutoRouterConfig(replaceInRouteName: 'Page,Route')
 class AppRouter extends _$AppRouter {
+
+  String get replaceInRouteName => 'Page,Route';
+  
   @override
   List<AutoRoute> get routes => [
         CustomRoute(
@@ -25,18 +28,24 @@ class AppRouter extends _$AppRouter {
               CustomRoute(
                   page: DashboardDefaultRoute.page,
                   transitionsBuilder: TransitionsBuilders.fadeIn,
-                  reverseDurationInMilliseconds: 800,
-                  durationInMilliseconds: 800,
+                  reverseDurationInMilliseconds: 100,
+                  durationInMilliseconds: 100,
                   initial: true,
                   path: ''),
               CustomRoute(
-                  page: OurProductsRoute.page,
+                  page: LoginRoute.page,
                   transitionsBuilder: TransitionsBuilders.fadeIn,
-                  reverseDurationInMilliseconds: 800,
-                  durationInMilliseconds: 800,
+                  reverseDurationInMilliseconds: 100,
+                  durationInMilliseconds: 100,
+                  path: 'login'),
+              CustomRoute(
+                  page: NosotrosRoute.page,
+                  transitionsBuilder: TransitionsBuilders.fadeIn,
+                  reverseDurationInMilliseconds: 100,
+                  durationInMilliseconds: 100,
                   path: 'nosotros'),
             ],
-            path: '/dashboard'),
+            path: '/'),
         CustomRoute(
             page: AuthRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn,

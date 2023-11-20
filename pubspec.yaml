@@ -13,6 +13,7 @@ dependencies:
   font_awesome_flutter: ^10.5.0
   expandable_page_view: ^1.0.17
   responsive_builder: ^0.7.0
+  url_strategy: ^0.2.0
   shared_preferences: ^2.2.0
   flutter_bloc: ^8.1.3
   flutter_rating_bar: ^4.0.1
@@ -20,7 +21,8 @@ dependencies:
   video_player: ^2.8.1
   fluttertoast: ^8.2.2
   flutter_svg: ^2.0.7
-  auto_route: ^7.8.0
+  auto_route: ^7.8.4
+  auto_route_generator: ^7.3.2
   animate_do: ^3.1.2
   equatable: ^2.0.5
   hidable: ^1.0.5
@@ -33,7 +35,6 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
-  auto_route_generator: ^7.2.0
   flutter_lints: ^2.0.0
   build_runner: ^2.4.5
   flutter_test:
